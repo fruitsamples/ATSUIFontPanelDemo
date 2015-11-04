@@ -130,7 +130,7 @@
 /* Begin PBXNativeTarget section */
 		8D0C4E890486CD37000505A6 /* ATSUIFontPanelDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE9C79600C502B5E003F6C7A /* Build configuration list for PBXNativeTarget "ATSUIFontPanelDemo" */;
+			buildConfigurationList = BEA160F80B7CD9F2000D6DB0 /* Build configuration list for PBXNativeTarget "ATSUIFontPanelDemo" */;
 			buildPhases = (
 				8D0C4E8C0486CD37000505A6 /* Resources */,
 				8D0C4E8F0486CD37000505A6 /* Sources */,
@@ -152,10 +152,12 @@
 /* Begin PBXProject section */
 		20286C28FDCF999611CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = BE9C79640C502B5E003F6C7A /* Build configuration list for PBXProject "ATSUIFontPanelDemo" */;
+			buildConfigurationList = BEA160F40B7CD9F2000D6DB0 /* Build configuration list for PBXProject "ATSUIFontPanelDemo" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 20286C29FDCF999611CA2CEA /* ATSUIFontPanelDemo */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D0C4E890486CD37000505A6 /* ATSUIFontPanelDemo */,
 			);
@@ -185,7 +187,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/tcsh;
+			shellPath = /bin/sh;
 			shellScript = "xcodebuild installsrc SRCROOT=$DSTROOT/Developer/Examples/ATSUI/Font\\ Panel\\ Support\n/bin/rm -rf $DSTROOT/Developer/Examples/ATSUI/Font\\ Panel\\ Support/build/\n/usr/sbin/chown root:wheel $DSTROOT/Developer/Examples/ATSUI/Font\\ Panel\\ Support/*\n";
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -225,96 +227,101 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BE9C79610C502B5E003F6C7A /* Development */ = {
+		BEA160F50B7CD9F2000D6DB0 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = ATSUIFontPanelDemo;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
+				ARCHS = "$(NATIVE_ARCH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "ppc7400 ppc970 i386 ppc";
 			};
 			name = Development;
 		};
-		BE9C79620C502B5E003F6C7A /* Deployment */ = {
+		BEA160F60B7CD9F2000D6DB0 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = ATSUIFontPanelDemo;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "ppc7400 ppc970 i386 ppc";
 			};
 			name = Deployment;
 		};
-		BE9C79630C502B5E003F6C7A /* Default */ = {
+		BEA160F70B7CD9F2000D6DB0 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = ATSUIFontPanelDemo;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "ppc7400 ppc970 i386 ppc";
 			};
 			name = Default;
 		};
-		BE9C79650C502B5E003F6C7A /* Development */ = {
+		BEA160F90B7CD9F2000D6DB0 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = $DSTROOT/Developer/Examples/ATSUI/Basics;
+				PRODUCT_NAME = ATSUIFontPanelDemo;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
 		};
-		BE9C79660C502B5E003F6C7A /* Deployment */ = {
+		BEA160FA0B7CD9F2000D6DB0 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = $DSTROOT/Developer/Examples/ATSUI/Basics;
+				PRODUCT_NAME = ATSUIFontPanelDemo;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Deployment;
 		};
-		BE9C79670C502B5E003F6C7A /* Default */ = {
+		BEA160FB0B7CD9F2000D6DB0 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ARCHS = "$(NATIVE_ARCH)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ATSUIFontPanelDemo_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = $DSTROOT/Developer/Examples/ATSUI/Basics;
+				PRODUCT_NAME = ATSUIFontPanelDemo;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BE9C79600C502B5E003F6C7A /* Build configuration list for PBXNativeTarget "ATSUIFontPanelDemo" */ = {
+		BEA160F40B7CD9F2000D6DB0 /* Build configuration list for PBXProject "ATSUIFontPanelDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE9C79610C502B5E003F6C7A /* Development */,
-				BE9C79620C502B5E003F6C7A /* Deployment */,
-				BE9C79630C502B5E003F6C7A /* Default */,
+				BEA160F50B7CD9F2000D6DB0 /* Development */,
+				BEA160F60B7CD9F2000D6DB0 /* Deployment */,
+				BEA160F70B7CD9F2000D6DB0 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		BE9C79640C502B5E003F6C7A /* Build configuration list for PBXProject "ATSUIFontPanelDemo" */ = {
+		BEA160F80B7CD9F2000D6DB0 /* Build configuration list for PBXNativeTarget "ATSUIFontPanelDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE9C79650C502B5E003F6C7A /* Development */,
-				BE9C79660C502B5E003F6C7A /* Deployment */,
-				BE9C79670C502B5E003F6C7A /* Default */,
+				BEA160F90B7CD9F2000D6DB0 /* Development */,
+				BEA160FA0B7CD9F2000D6DB0 /* Deployment */,
+				BEA160FB0B7CD9F2000D6DB0 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;

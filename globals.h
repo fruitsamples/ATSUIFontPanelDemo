@@ -5,7 +5,7 @@ File: globals.h
 Abstract: Global variable declarations and constants for
 ATSUIFontPanelDemo project.
 
-Version: <1.0>
+Version: <1.1>
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
 Computer, Inc. ("Apple") in consideration of your agreement to the
@@ -45,7 +45,7 @@ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
 STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
-Copyright © 2004 Apple Computer, Inc., All Rights Reserved
+Copyright © 2004-2007 Apple Inc., All Rights Reserved
 
 */
 
@@ -60,6 +60,7 @@ Copyright © 2004 Apple Computer, Inc., All Rights Reserved
 // Windows
 extern WindowRef gMainWindow;
 extern WindowRef gTextPalette;
+extern HIViewRef gView;
 extern WindowRef gLayoutControls;
 extern WindowRef gStyleControls;
 

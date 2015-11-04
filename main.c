@@ -5,7 +5,7 @@ File: main.h
 Abstract: Main entry point for ATSUIFontPanelDemo project. Instantiates
 windows, main menu bar, and controls.
 
-Version: <1.0>
+Version: <1.1>
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
 Computer, Inc. ("Apple") in consideration of your agreement to the
@@ -45,7 +45,7 @@ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
 STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
-Copyright © 2004 Apple Computer, Inc., All Rights Reserved
+Copyright © 2004-2007 Apple Inc., All Rights Reserved
 
 */
 
@@ -59,8 +59,9 @@ Copyright © 2004 Apple Computer, Inc., All Rights Reserved
 //
 int main(int argc, char* argv[])
 {
-    IBNibRef 		nibRef;
-    OSStatus		err;
+    IBNibRef				nibRef;
+	static const HIViewID	viewID = {'awin', 0 };
+    OSStatus				err;
 
     // Get the GUI resources from the NIB file
     err = CreateNibReference(CFSTR("main"), &nibRef);
@@ -78,13 +79,14 @@ int main(int argc, char* argv[])
     err = CreateWindowFromNib(nibRef, CFSTR("TextPalette"), &gTextPalette);
     require_noerr( err, CantCreateWindow );
 
-
     // That's everything we needed from the NIB
     DisposeNibReference(nibRef);
     
     // The windows were created hidden, so show them
     ShowWindow(gMainWindow);
     ShowWindow(gTextPalette);
+
+	HIViewFindByID(HIViewGetRoot(gMainWindow), viewID, &gView);
 
     // Show the font panel
     if ( ! FPIsFontPanelVisible() ) FPShowHideFontPanel();
@@ -99,7 +101,7 @@ int main(int argc, char* argv[])
 
     // Set up the ATSUI stuff and draw it for the first time
     ATSUIStuffInitialize();
-    ATSUIStuffDraw(GetWindowPort(gMainWindow));
+	HIViewSetNeedsDisplay(gView, true);
 
     // Set the initial font panel state
     ATSUIStuffSetFontPanelState();

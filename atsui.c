@@ -8,7 +8,7 @@ getters and setters operate on these gloals. The function
 ATSUIStuffSetDictionary() contains font-panel specific style setting code.
 
 
-Version: <1.0>
+Version: <1.1>
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
 Computer, Inc. ("Apple") in consideration of your agreement to the
@@ -48,7 +48,7 @@ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
 STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
-Copyright © 2004 Apple Computer, Inc., All Rights Reserved
+Copyright © 2004-2007 Apple Inc., All Rights Reserved
 
 */
 
@@ -246,7 +246,8 @@ void ATSUIStuffSetDictionary(CFDictionaryRef dict)
 // in FixMath.h (found in the CarbonCore framework) will convert to and
 // from Fixed. These macros are called "Fix2X" and "X2Fix".
 //
-void ATSUIStuffDraw(GrafPtr port)
+//void ATSUIStuffDraw(GrafPtr port)
+void ATSUIStuffDraw(CGContextRef cgContext, HIRect bounds)
 {
     ATSUAttributeTag                    tags[1];
     ByteCount                           sizes[1];
@@ -254,43 +255,29 @@ void ATSUIStuffDraw(GrafPtr port)
     UniCharArrayOffset					textStart, currentStart, currentEnd;
     UniCharCount						length;
     Fixed								width, ascent, descent;
-    Rect								portBounds;
     Rect								margin;
     CGContextRef						context;
-    GrafPtr								savedPort;
     float								penX, penY, cgAwarePenY, windowHeight;
     ItemCount							numSoftBreaks;
     UniCharArrayOffset					*theSoftBreaks;
     int									i;
     OSStatus							status;
 
-    // Set up the graphics port
-    GetPort(&savedPort);
-    SetPort(port);
-    GetPortBounds(port, &portBounds);
-    EraseRect(&portBounds);
-    
-    // Draw the margin
-    MacSetRect(&margin, portBounds.left, portBounds.top, portBounds.right, portBounds.bottom);
-    MacInsetRect(&margin, kMargin, kMargin);
-    MacFrameRect(&margin);
-
     // Set up the line width
-    width = Long2Fix(portBounds.right - portBounds.left - (kMargin * 2));
+    width = Long2Fix(bounds.size.width - (kMargin * 2));
     tags[0] = kATSULineWidthTag;
     sizes[0] = sizeof(Fixed);
     values[0] = &width;
     verify_noerr( ATSUSetLayoutControls(gLayout, 1, tags, sizes, values) );
 
     // Set up the CGContext
-	QDBeginCGContext(port, &context);
 	tags[0] = kATSUCGContextTag;
 	sizes[0] = sizeof(CGContextRef);
-	values[0] = &context;
+	values[0] = &cgContext;
 	verify_noerr( ATSUSetLayoutControls(gLayout, 1, tags, sizes, values) );
     
     // Initial pen position
-    windowHeight = portBounds.bottom - portBounds.top;
+    windowHeight = bounds.size.height;
     penX = kMargin;
     penY = kMargin;
     cgAwarePenY = windowHeight - penY; // This is how you transform between CG and QD style coordinates
@@ -324,9 +311,5 @@ void ATSUIStuffDraw(GrafPtr port)
     free(theSoftBreaks);
 
     // Tear down the CGContext
-	CGContextFlush(context);
-	QDEndCGContext(port, &context);
-
-    // Restore the graphics port
-    SetPort(savedPort);
+	CGContextFlush(cgContext);
 }
